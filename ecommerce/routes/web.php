@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+//Home page routes
 Route::get('/',[BaseController::class,'home']);
 
 Route::get('/home',[BaseController::class,'home'])->name('home');
@@ -31,3 +33,7 @@ Route::get('/contact',[BaseController::class,'contact'])->name('contact');
 Route::get('/cart',[BaseController::class,'cart'])->name('cart');
 
 Route::get('/productView',[BaseController::class,'productView'])->name('productView');
+
+//Admin routes 
+Route::get('/admin/login',[AdminController::class,'login'])->name('admin.login');
+
