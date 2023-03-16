@@ -35,7 +35,7 @@ Route::get('/cart',[BaseController::class,'cart'])->name('cart');
 Route::get('/productView',[BaseController::class,'productView'])->name('productView');
 
 //Admin routes 
-Route::get('/admin/login',[AdminController::class,'login'])->name('admin.login');
+Route::get('/admin/login', [AdminController::class,'login'])->name('admin.login');
 
-Route::post('/admin/login',[AdminController::class,'makeLogin'])->name('admin.makeLogin');
+Route::post('/admin/login', [AdminController::class,'makeLogin'])->name('admin.makeLogin');
 

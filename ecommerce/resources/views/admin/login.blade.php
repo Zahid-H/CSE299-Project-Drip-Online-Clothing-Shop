@@ -10,56 +10,46 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('admin_theme/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{asset('admin_theme/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ asset('admin_theme/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{asset('admin_theme/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ asset('admin_theme/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{asset('admin_theme/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="{{ asset('admin_theme/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{asset('admin_theme/vendors/animate.css/animate.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ asset('admin_theme/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{asset('admin_theme/build/css/custom.min.css')}}" rel="stylesheet">
   </head>
 
   <body class="login">
-
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
             @if ($errors->any())
               <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)
-                    <li> {{ $error }}</li>
-                    
-                @endforeach
-            </div>
+                    <li>{{ $error }}</li>
+                @endforeach   
+              </div>
             @endif
-            <form action="{{ route('admin.makeLogin') }}" method="post">
+            <form action="{{route('admin.makeLogin')}}" method="post">
               <h1>Login Form</h1>
               @csrf
               <div>
-                <input type="text" class="form-control" name="email" placeholder="Username" required="" />
+                <input type="text" class="form-control" name="email" placeholder="Email" required="" />
               </div>
               <div>
                 <input type="password" class="form-control" name="password" placeholder="Password" required="" />
               </div>
               <div>
-                {{-- <a class="btn btn-default submit" href="index.html">Log in</a> --}}
                 <input type="submit" name="">
               </div>
 
-             
-
-                
-         
-              </div>
             </form>
           </section>
         </div>
 
-        
-      {{-- </div> --}}
-    </div>
+      </div>
   </body>
 </html>
