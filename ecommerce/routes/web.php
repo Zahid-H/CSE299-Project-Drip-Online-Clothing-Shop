@@ -19,3 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home',[BaseController::class,'home'])->name('home');
+
+Route::get('/specialOffer',[BaseController::class,'specialOffer'])->name('specialOffer');
+
+Route::get('/delivery',[BaseController::class,'delivery'])->name('delivery');
+
+Route::get('/contact',[BaseController::class,'contact'])->name('contact');
