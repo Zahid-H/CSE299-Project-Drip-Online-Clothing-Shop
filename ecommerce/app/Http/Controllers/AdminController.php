@@ -24,10 +24,13 @@ class AdminController extends Controller
         );
 
         if (Auth::attempt($data)) {
-            return view('admin.dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             return back()->withErrors(['message' => 'invalid email or password']);
         }
+    }
+    public function dashboard(){
+        return view('admin.dashboard');
     }
 
 }
