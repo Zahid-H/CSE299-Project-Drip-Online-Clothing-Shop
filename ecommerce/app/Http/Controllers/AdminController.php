@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Hash;
-use Illuminate\Support\Facades\Auth;
 use Hash;
+use Illuminate\Support\Facades\Auth;
+
 class AdminController extends Controller
 {
     public function login()
     {
+        
         return view('admin.login');
     }
 
@@ -28,4 +29,5 @@ class AdminController extends Controller
             return back()->withErrors(['message' => 'invalid email or password']);
         }
     }
+
 }
