@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/admin/logout',[AdminController::class,'logout'])->name('admin.logout');
     
     /**Category controller routes */
+    Route::get('/categories',[CategoryController::class,'index'])->name('category.list');
+
     Route::get('/category/add',[CategoryController::class,'create'])->name('category.create');
 
     Route::post('/category/add',[CategoryController::class,'store'])->name('category.store');

@@ -26,12 +26,13 @@
           <h3>General</h3>
           <ul class="nav side-menu">
             <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
-              {{-- <ul class="nav child_menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="index2.html">Dashboard2</a></li>
-                <li><a href="index3.html">Dashboard3</a></li>
-              </ul> --}}
             </li>
+            <li class="active"><a><i class="fa fa-home"></i>Category Manager<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: none;">
+                  <li><a href="{{ route('category.list') }}">List</a></li>
+                  <li><a href="{{ route('category.create') }}">Create</a></li>
+                </ul>
+              </li>
 
           </ul>
         </div>
