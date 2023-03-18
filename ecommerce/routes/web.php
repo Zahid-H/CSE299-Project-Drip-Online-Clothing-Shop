@@ -56,5 +56,11 @@ Route::group(['middleware' => 'auth'],function(){
 
     Route::post('/category/add',[CategoryController::class,'store'])->name('category.store');
 
+    Route::get('/categories/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
+    
+    Route::post('/categories/edit/{id}',[CategoryController::class,'update'])->name('category.update');
+    
+    Route::post('/category/delete',[CategoryController::class,'destroy'])->name('category.delete');
+
 
 });

@@ -64,9 +64,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Request $request, Category $category)
     {
-        //
+        $id = $request->id;
+        $categories = Category::whereNull('category_id')->get();
+        $category = Category::find($id);
+        return view('admin.category.edit',compact('categories','category'));
     }
 
     /**
@@ -76,19 +79,27 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
+    public function update(Request $request, Category $category){
+        $id = $request->id;
+        $data = array(
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+        );
 
+        $category = Category::find($id);
+        $category->update($data);
+        return redirect()->route('category.list');
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
-        //
+    public function destroy(Request $request, Category $category){
+        $id = $request->id;
+        $category = Category::find($id);
+        $category->delete();
+        return response()->json('success');
     }
 }
