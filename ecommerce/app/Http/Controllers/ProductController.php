@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -117,5 +118,28 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return response()->json('success');
+    }
+
+    public function extraDetails(Request $request){
+        $id = $request->id;
+        $product = Product::where('id',$id)->with('ProductDetail')->first();
+        return view('admin.product.extraDetails',compact('id','product'));
+    }
+
+    public function extraDetailsStore(Request $request){
+        $id = $request->id;
+        $data = array(
+            'title' => $request->title,
+            'product_id' => $id,
+            'total_items' => $request->total_items,
+            'description' => $request->description
+        );
+
+        $details = ProductDetail::updateOrCreate(
+            ['product_id' => $id],
+            $data
+        );
+
+        return redirect()->route('product.list');
     }
 }

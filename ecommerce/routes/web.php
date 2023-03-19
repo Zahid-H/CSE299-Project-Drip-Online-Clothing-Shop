@@ -74,5 +74,8 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/product/edit/{id}', [ProductController::class,'update'])->name('product.update');
     
     Route::post('/product/delete', [ProductController::class,'destroy'])->name('product.delete');
+    
+    Route::get('/product/details/{id}', [ProductController::class,'extraDetails'])->name('product.extraDetails');
 
+    Route::post('/product/details/{id}', [ProductController::class,'extraDetailsStore'])->name('product.extraDetailsStore');
 });
