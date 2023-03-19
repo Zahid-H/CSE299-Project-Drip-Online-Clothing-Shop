@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 class BaseController extends Controller
@@ -37,6 +38,20 @@ class BaseController extends Controller
         return view('front.login');
      }
 
+     public function loginCheck(Request $request) {
+        $data = array(
+           'email' => $request->email,
+           'password' => $request->password
+        );
+  
+        if(Auth::attempt($data)){
+           return redirect()->route('home');
+        }else{
+           return back()->withErrors(['message'=>'invalid email or password']);
+        }
+     }
+  
+
      public function user_store(Request $request) {
         $data = array(
            'name' => $request->first_name.' '.$request->last_name,
@@ -48,6 +63,10 @@ class BaseController extends Controller
         $user = User::create($data);
         return redirect()->route('user_login');
   
+     }
+     public function logout() {
+        Auth::logout();
+        return redirect()->route('user_login');
      }
   
 }
