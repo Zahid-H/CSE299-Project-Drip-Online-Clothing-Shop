@@ -75,7 +75,18 @@ Route::group(['middleware' => 'auth'],function(){
     
     Route::post('/product/delete', [ProductController::class,'destroy'])->name('product.delete');
     
+    // Route::get('/product/details/{id}', [ProductController::class,'extraDetails'])->name('product.extraDetails');
+
+    // Route::post('/product/details/{id}', [ProductController::class,'extraDetailsStore'])->name('product.extraDetailsStore');
+
     Route::get('/product/details/{id}', [ProductController::class,'extraDetails'])->name('product.extraDetails');
 
     Route::post('/product/details/{id}', [ProductController::class,'extraDetailsStore'])->name('product.extraDetailsStore');
+    
+    //user login 
+    Route::get('user/login', [Basecontroller::class,'user_login'])->name('user_login');
+    Route::post('user/login', [Basecontroller::class,'loginCheck'])->name('loginCheck');
+    Route::post('user/register', [Basecontroller::class,'user_store'])->name('user_store');
+    Route::get('user/logout', [Basecontroller::class,'logout'])->name('user_logout');
+    Route::post('user/register', [Basecontroller::class,'user_store'])->name('user_store');
 });

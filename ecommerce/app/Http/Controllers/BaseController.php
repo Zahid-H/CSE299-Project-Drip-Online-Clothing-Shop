@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 class BaseController extends Controller
 {
     public function home(){
@@ -30,6 +32,22 @@ class BaseController extends Controller
         $category_id = $product->category_id;
         $related_products = Product::where('category_id',$category_id)->get();
          return view('front.productView',compact('product','related_products'));
+     }
+     public function user_login() {
+        return view('front.login');
+     }
+
+     public function user_store(Request $request) {
+        $data = array(
+           'name' => $request->first_name.' '.$request->last_name,
+           'email' => $request->email,
+           'password' => Hash::make($request->password),
+           'role' => 'user'
+        );
+        
+        $user = User::create($data);
+        return redirect()->route('user_login');
+  
      }
   
 }
