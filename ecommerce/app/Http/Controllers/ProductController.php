@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::get();
+        return view('admin.product.index',compact('products'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::whereNotNull('category_id')->get();
+        return view('admin.product.add',compact('categories'));
     }
 
     /**
@@ -35,7 +38,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = array(
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+        );
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $fileName = date('dmY').time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path("/uploads"), $fileName);
+            $data['image'] = $fileName;
+        }
+            
+        $create = Product::create($data);
+        return redirect()->route('product.create');
+    
     }
 
     /**
@@ -55,9 +72,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
-    {
-        //
+    public function edit(Product $product,Request $request){
+        $id = $request->id;
+        $product = Product::findOrFail($id);
+        $categories = Category::whereNotNull('category_id')->get();
+        return view('admin.product.edit',compact('product','categories'));
     }
 
     /**
@@ -67,9 +86,23 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
-    {
-        //
+    public function update(Request $request, Product $product){
+        $id = $request->id;
+        $data = array(
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+        );
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $fileName = date('dmY').time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path("/uploads"), $fileName);
+            $data['image'] = $fileName;
+        }
+
+        $create = Product::where('id',$id)->update($data);
+        return redirect()->route('product.list');
+
     }
 
     /**
@@ -78,8 +111,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product,Request $request)
     {
-        //
+        $id = $request->id;
+        $product = Product::find($id);
+        $product->delete();
+        return response()->json('success');
     }
 }
