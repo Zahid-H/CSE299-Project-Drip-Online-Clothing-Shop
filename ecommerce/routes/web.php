@@ -33,7 +33,7 @@ Route::get('/contact',[BaseController::class,'contact'])->name('contact');
 
 Route::get('/cart',[BaseController::class,'cart'])->name('cart');
 
-Route::get('/productView',[BaseController::class,'productView'])->name('productView');
+Route::get('/productView/{id}',[BaseController::class,'productView'])->name('productView');
 
 //Admin routes 
 Route::get('/admin/login', [AdminController::class,'login'])->name('admin.login');
