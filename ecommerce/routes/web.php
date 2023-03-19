@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +61,11 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/categories/edit/{id}',[CategoryController::class,'update'])->name('category.update');
     
     Route::post('/category/delete',[CategoryController::class,'destroy'])->name('category.delete');
+
+    /* product controllers*/
+    Route::get('/products',[ProductController::class,'index'])->name('product.list');
+    
+    Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
 
 
 });
