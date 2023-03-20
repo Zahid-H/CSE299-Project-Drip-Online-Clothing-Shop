@@ -5,6 +5,7 @@ use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,8 +87,11 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/product/details/{id}', [ProductController::class,'extraDetails'])->name('product.extraDetails');
 
     Route::post('/product/details/{id}', [ProductController::class,'extraDetailsStore'])->name('product.extraDetailsStore');
-    
-    //user login 
+     
+    Route::get('/admin/users', [UserController::class,'index'])->name('admin.users');
+
+    Route::post('/admin/delete', [UserController::class,'delete'])->name('user.delete');
+     
     
 
    
