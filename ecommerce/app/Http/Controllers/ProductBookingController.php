@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+use App\Models\ProductBooking;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
+class ProductBookingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,35 +35,27 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $data = array(
-            'product_id'=>$request->product_id,
-            'qty'=>$request->qty,
-            'user_id'=>Auth::user()->id,
-        );
-
-        Cart::create($data);
-        return redirect()->route('cart');
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\ProductBooking  $productBooking
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show(ProductBooking $productBooking)
     {
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\ProductBooking  $productBooking
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit(ProductBooking $productBooking)
     {
         //
     }
@@ -73,10 +64,10 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\ProductBooking  $productBooking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, ProductBooking $productBooking)
     {
         //
     }
@@ -84,13 +75,11 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\ProductBooking  $productBooking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart,Request $request)
+    public function destroy(ProductBooking $productBooking)
     {
-        $id = $request->id;
-        $cart = Cart::where('id',$id)->first();
-        $cart->delete();
+        //
     }
 }

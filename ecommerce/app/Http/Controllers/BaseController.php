@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Foundation\Auth\User;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -24,16 +25,22 @@ class BaseController extends Controller
     public function contact(){
         return view('front.contact');
     }
-    public function cart(){
-        return view('front.cart');
-    }
-    public function productView(Request $request) {
-        $id = $request->id;
-        $product = Product::where('id',$id)->with('ProductDetail')->first();
-        $category_id = $product->category_id;
-        $related_products = Product::where('category_id',$category_id)->get();
-         return view('front.productView',compact('product','related_products'));
-     }
+    public function cart() {
+      $carts = [];
+      if (Auth::user()) {
+         $user_id = Auth::user()->id;
+         $carts = Cart::where('user_id',$user_id)->get();
+      }
+      
+   	return view('front.cart',compact('carts'));
+   }
+   public function productView(Request $request) {
+      $id = $request->id;
+      $product = Product::where('id',$id)->with('ProductDetail')->first();
+      $category_id = $product->category_id;
+      $related_products = Product::where('category_id',$category_id)->get();
+   	return view('front.productView',compact('product','related_products'));
+   }
      public function user_login() {
         return view('front.login');
      }
