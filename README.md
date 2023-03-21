@@ -10,7 +10,7 @@ vi.set Database lara_ecommerce<br />
 vii.Run php artisan migration<br />
 viii.Localhost::8000/home for home<br />
 ix.Localhost::8000/admin/login for admin panel <br />
-
+https://laravel.com/docs/9.x/installation
 # Screenshots of UI
 ![Screenshot (13)](https://user-images.githubusercontent.com/83463788/226597356-08e34a28-d2dc-4c6d-ab46-063cf2005ae2.png)
 ![Screenshot (6)](https://user-images.githubusercontent.com/83463788/226597417-a3702a8f-659d-42db-9aea-5a03cfee0ab2.png)
