@@ -19,7 +19,8 @@ class ProductBookingController extends Controller
      */
     public function index()
     {
-        //
+        $booking_products = ProductBooking::get();
+        return view('admin.bookedProducts.index',compact('booking_products'));
     }
 
     /**
@@ -44,7 +45,7 @@ class ProductBookingController extends Controller
         $data = array();
         $amount = 0;
 
-        foreach ($cart_id as $i=>$value) {
+        foreach ($cart_id as $i => $value) {
             $cart = Cart::find($value);
             $amount = $amount + $cart->product->price;
             $data[$i]['user_id'] = $cart->user_id;
@@ -55,17 +56,17 @@ class ProductBookingController extends Controller
 
         $ProductBooking = ProductBooking::insert($data);
         $bookIds = ProductBooking::orderBy('id', 'desc')->take(count($data))->pluck('id');
-                
+
         if ($ProductBooking) {
             Cart::destroy($cart_id);
 
-            
-            if($request->payment_type == 'eway'){
+
+            if ($request->payment_type == 'eway') {
                 Session::put('bookIds', $bookIds);
                 $url = $this->ewayPayment($amount);
-                return response()->json(['type'=>'eway','url'=>$url]);
-            }else{
-                return response()->json(['type'=>'pay_person']);
+                return response()->json(['type' => 'eway', 'url' => $url]);
+            } else {
+                return response()->json(['type' => 'pay_person']);
             }
         }
     }
@@ -110,8 +111,65 @@ class ProductBookingController extends Controller
      * @param  \App\Models\ProductBooking  $productBooking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductBooking $productBooking)
+    public function destroy(ProductBooking $productBooking, Request $request)
     {
-        //
+        $id = $request->id;
+        $bookedProduct = ProductBooking::find($id);
+        $bookedProduct->delete();
+    }
+
+    public function ewayPayment($amount)
+    {
+
+        $total_amount = $amount;
+
+        $apiKey = '44DD7CBr8JDRzL+6VW/swNd19DO+UeROK/irtZCBPvlV539Rf9YSlhUKiznp+MyrDB8Ca';
+        $apiPassword = 'xlO6vrKe';
+        $apiEndpoint = 'Sandbox';
+        $client = \Eway\Rapid::createClient($apiKey, $apiPassword, $apiEndpoint);
+
+        // Transaction details 
+        $transaction = [
+            'RedirectUrl' => route('product.bookingSuccess'),
+            'CancelUrl' => route('product.bookingFail'),
+            'TransactionType' => \Eway\Rapid\Enum\TransactionType::PURCHASE,
+            'Payment' => [
+                'TotalAmount' => $total_amount * 100,
+            ],
+
+        ];
+
+        // Submit data to eWAY to get a Shared Page URL
+        $response = $client->createTransaction(\Eway\Rapid\Enum\ApiMethod::RESPONSIVE_SHARED, $transaction);
+
+
+        // Check for any errors
+        $sharedURL = '';
+        if (!$response->getErrors()) {
+            $sharedURL = $response->SharedPaymentUrl;
+        }
+
+        return $sharedURL;
+    }
+    public function bookingFail()
+    {
+        Session::forget('bookIds');
+        return redirect()->route('cart');
+    }
+
+    public function bookingSuccess()
+    {
+        $bookIds = Session::get('bookIds');
+        ProductBooking::whereIn('id', $bookIds)->update(['payment_status' => '1']);
+        Session::forget('bookIds');
+        return redirect()->route('cart');
+    }
+
+    public function change_bookingStatus(Request $request)
+    {
+        $id = $request->id;
+        $booking_status = $request->booking_status;
+
+        $booking_product = ProductBooking::where('id', $id)->update(['booking_status' => $booking_status]);
     }
 }

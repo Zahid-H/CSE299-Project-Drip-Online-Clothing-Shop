@@ -8,9 +8,9 @@
       <a href="{{route('cart')}}"><span class="">Es</span></a>
       <span class="btn btn-mini">En</span>
       <a href="{{route('cart')}}"><span>&pound;</span></a>
-      <span class="btn btn-mini">$155.00</span>
-      <a href="{{route('cart')}}"><span class="">$</span></a>
-      <a href="{{route('cart')}}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+      {{-- <span class="btn btn-mini"></span> --}}
+      <a href="{{route('cart')}}"><span class=""></span></a>
+      {{-- <a href="{{route('cart')}}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> </span> </a>  --}}
     </div>
     </div>
   </div>
@@ -22,20 +22,22 @@
     <span class="icon-bar"></span>
   </a>
     <div class="navbar-inner">
-      <a class="brand" href="{{route('home')}}"><img src="{{asset('themes/images/logo.png')}}" alt="Bootsshop"/></a>
+      <h2 style="color:Tomato; text-align:center ">Drip Online Clothing Shop<a class="brand" href="{{route('home')}}"></a></h2>
+      <a class="brand" href="{{route('home')}}"></a>
       <form class="form-inline navbar-search" method="post" action="products.html" >
       <input id="srchFld" class="srchTxt" type="text" />
-        <select class="srchTxt">
+        {{-- <select class="srchTxt">
         <option>All</option>
         <option>CLOTHES </option>
         <option>FOOD AND BEVERAGES </option>
         <option>HEALTH & BEAUTY </option>
         <option>SPORTS & LEISURE </option>
         <option>BOOKS & ENTERTAINMENTS </option>
-      </select> 
+      </select>  --}}
         <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
       </form>
       <ul id="topMenu" class="nav pull-right">
+      <li><a href="{{route('cart')}}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> </span> </a> </li>
      <li class=""><a href="{{route('specialOffer')}}">Specials Offer</a></li>
      <li class=""><a href="{{route('delivery')}}">Delivery</a></li>
      <li class=""><a href="{{route('contact')}}">Contact</a></li>

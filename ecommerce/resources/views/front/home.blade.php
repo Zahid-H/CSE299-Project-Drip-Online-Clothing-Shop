@@ -8,57 +8,57 @@
 		<div class="carousel-inner">
 		  <div class="item active">
 		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="themes/images/carousel/1.png" alt="special offers"/></a>
+			<a href="register.html"><img style="width:100%" src="themes/images/carousel/b1.png" alt="special offers"/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				  
 				</div>
 		  </div>
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="themes/images/carousel/2.png" alt=""/></a>
+			<a href="register.html"><img style="width:100%" src="themes/images/carousel/b2.png" alt=""/></a>
 				<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				  
 				</div>
 		  </div>
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/3.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/b3.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				  
 				</div>
 			
 		  </div>
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/4.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/b4.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				  
 				</div>
 		   
 		  </div>
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/5.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/b3.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				  
 			</div>
 		  </div>
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/6.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/b5.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				 
 				</div>
 		  </div>
 		  </div>
@@ -90,7 +90,7 @@
 							<a href="{{route('productView',$value->id)}}"><img src="{{asset('uploads/'.$value->image)}}" alt=""></a>
 							<div class="caption">
 							  <h5>{{$value->name}}</h5>
-							  <h4><a class="btn" href="{{route('productView',$value->id)}}">VIEW</a> <span class="pull-right">${{$value->price}}</span></h4>
+							  <h4><a class="btn" href="{{route('productView',$value->id)}}">VIEW</a> <span class="pull-right">৳ {{$value->price}}</span></h4>
 							</div>
 						  </div>
 						</li>

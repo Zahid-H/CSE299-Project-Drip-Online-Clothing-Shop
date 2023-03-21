@@ -36,23 +36,24 @@
 							<button class="btn btn-danger btn_close" data-id="{{$cart->id}}" type="button"><i class="icon-remove icon-white"></i></button></div>
 				  </td>
           <td><input type="checkbox" name="select_product[]" cart-id="{{$cart->id}}"></td>
-          <td>${{$cart->product->price}}</td>
+          <td>৳{{$cart->product->price}}</td>
         </tr>
 				@endforeach
         <tr>
           <td colspan="4" style="text-align:right">Total Price:	</td>
-          <td> ${{$sum}}</td>
+          <td>৳{{$sum}}</td>
         </tr>
 				 <tr>
             <td colspan="3" style="text-align:right"></td>
             <td>Pay with eway<input type="checkbox" name="eway" style="margin-left: 12px;"></td>
+            <td>Pay with SSLecommerce<input type="checkbox" name="eway" style="margin-left: 12px;"></td>
             <td class="label label-important buy_product" style="display:block;cursor:pointer;"> <strong>Buy</strong></td>
-          </tr>
+          
 			</tbody>
     </table>
 			
-	<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
-	<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+	<a href="{{ route('home') }}" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+	<a href="{{ route('home') }}" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 	
 </div>
 
