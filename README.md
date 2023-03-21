@@ -1,8 +1,8 @@
 # Laravel-Ecommerce
 
 #Requirements
-i.Install composer
-ii.Install laravel
+*i.Install composer
+*ii.Install laravel
 iii. install Xampp
 iv. locate the directory and run command in the cmd Laravel php artisan serve
 v.Laravel php artisan serve
