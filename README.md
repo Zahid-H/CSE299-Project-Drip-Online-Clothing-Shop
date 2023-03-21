@@ -1,6 +1,6 @@
 # Laravel-Ecommerce
 
-#Requirements
+# Requirements
 i.Install composer<br />
 ii.Install laravel<br />
 iii. install Xampp<br />
@@ -9,8 +9,9 @@ v.Laravel php artisan serve<br />
 vi.set Database lara_ecommerce<br />
 vii.Run php artisan migration<br />
 viii.Localhost::8000/home for home<br />
-ix.Localhost::8000/admin/login for admin panel 
-#Screenshots of UI
+ix.Localhost::8000/admin/login for admin panel <br />
+
+# Screenshots of UI
 ![Screenshot (13)](https://user-images.githubusercontent.com/83463788/226597356-08e34a28-d2dc-4c6d-ab46-063cf2005ae2.png)
 ![Screenshot (6)](https://user-images.githubusercontent.com/83463788/226597417-a3702a8f-659d-42db-9aea-5a03cfee0ab2.png)
 ![Screenshot (7)](https://user-images.githubusercontent.com/83463788/226597428-e06d76be-be6d-46db-ab50-edf3054a8f5f.png)
